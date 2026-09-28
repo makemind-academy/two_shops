@@ -1,0 +1,25 @@
+{
+  "shopName": "Riverside",
+  "currency": "$",
+  "taxPercent": 10,
+  "taxIncluded": true,
+  "openHours": "07:00 - 20:00",
+  "accent": "#0f766e",
+  "menu": [
+    {
+      "sku": "AM",
+      "name": "Americano",
+      "price": 380
+    },
+    {
+      "sku": "LA",
+      "name": "Latte",
+      "price": 430
+    },
+    {
+      "sku": "SC",
+      "name": "Scone",
+      "price": 320
+    }
+  ]
+}

@@ -1,0 +1,74 @@
+{
+  "type": "application",
+  "title": "Counter",
+  "version": "1.0.0",
+  "initialRoute": "/counter",
+  "routes": {
+    "/counter": "ui://pages/counter"
+  },
+  "theme": {
+    "mode": "light",
+    "color": {
+      "primary": "#1f2937",
+      "onPrimary": "#ffffff",
+      "primaryContainer": "#eceff3",
+      "onPrimaryContainer": "#111827",
+      "surface": "#ffffff",
+      "onSurface": "#131a20",
+      "surfaceContainerHighest": "#f4f5f7",
+      "onSurfaceVariant": "#828d99",
+      "outline": "#e3e7ec",
+      "outlineVariant": "#e3e7ec",
+      "error": "#b3261e",
+      "onError": "#ffffff",
+      "warning": "#a4620a",
+      "onWarning": "#ffffff",
+      "inverseSurface": "#131a20",
+      "inverseOnSurface": "#ffffff"
+    },
+    "spacing": {
+      "xxs": 2,
+      "xs": 4,
+      "sm": 8,
+      "md": 16,
+      "lg": 24,
+      "xl": 32,
+      "2xl": 48
+    },
+    "shape": {
+      "none": 0,
+      "extraSmall": 4,
+      "small": 8,
+      "medium": 12,
+      "large": 16,
+      "extraLarge": 28,
+      "full": 999
+    },
+    "fonts": {
+      "JetBrainsMono": {
+        "source": "asset",
+        "family": "JetBrainsMono"
+      }
+    }
+  },
+  "state": {
+    "initial": {
+      "shopName": "",
+      "accent": "#111827",
+      "openHours": "",
+      "menuRows": [],
+      "basketRows": [],
+      "basketCount": 0,
+      "basketLine": "",
+      "taxNote": "",
+      "tax": "",
+      "due": "",
+      "notice": ""
+    }
+  },
+  "onInit": {
+    "type": "tool",
+    "tool": "counter.state",
+    "params": {}
+  }
+}

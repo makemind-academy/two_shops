@@ -1,0 +1,30 @@
+{
+  "shopName": "Hilltop",
+  "currency": "$",
+  "taxPercent": 10,
+  "taxIncluded": false,
+  "openHours": "09:00 - 18:00",
+  "accent": "#b45309",
+  "menu": [
+    {
+      "sku": "AM",
+      "name": "Americano",
+      "price": 450
+    },
+    {
+      "sku": "LA",
+      "name": "Latte",
+      "price": 500
+    },
+    {
+      "sku": "CK",
+      "name": "Carrot cake",
+      "price": 650
+    },
+    {
+      "sku": "TE",
+      "name": "Pot of tea",
+      "price": 550
+    }
+  ]
+}

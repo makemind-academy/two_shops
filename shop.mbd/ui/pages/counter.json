@@ -1,0 +1,391 @@
+{
+  "type": "page",
+  "metadata": {
+    "title": "Counter"
+  },
+  "onInit": {
+    "type": "tool",
+    "tool": "counter.state",
+    "params": {}
+  },
+  "state": {
+    "initial": {
+      "shopName": "",
+      "accent": "#111827",
+      "openHours": "",
+      "menuRows": [],
+      "basketRows": [],
+      "basketCount": 0,
+      "basketLine": "",
+      "taxNote": "",
+      "tax": "",
+      "due": "",
+      "notice": ""
+    }
+  },
+  "content": {
+    "type": "container",
+    "decoration": {
+      "color": "{{theme.color.surfaceContainerHighest}}"
+    },
+    "child": {
+      "type": "linear",
+      "direction": "vertical",
+      "children": [
+        {
+          "type": "container",
+          "padding": {
+            "left": 24,
+            "right": 24,
+            "top": 22,
+            "bottom": 18
+          },
+          "decoration": {
+            "color": "{{theme.color.surface}}",
+            "border": {
+              "bottom": true,
+              "color": "{{theme.color.outline}}",
+              "width": 1
+            }
+          },
+          "child": {
+            "type": "linear",
+            "direction": "horizontal",
+            "crossAxisAlignment": "center",
+            "children": [
+              {
+                "type": "linear",
+                "direction": "vertical",
+                "children": [
+                  {
+                    "type": "text",
+                    "content": "{{shopName}}",
+                    "style": {
+                      "fontSize": 24,
+                      "color": "{{accent}}",
+                      "fontWeight": "bold"
+                    }
+                  },
+                  {
+                    "type": "text",
+                    "content": "Counter · {{openHours}}",
+                    "style": {
+                      "fontSize": 14,
+                      "color": "{{theme.color.onSurfaceVariant}}"
+                    }
+                  }
+                ],
+                "gap": 4
+              },
+              {
+                "type": "spacer"
+              },
+              {
+                "type": "linear",
+                "direction": "vertical",
+                "children": [
+                  {
+                    "type": "text",
+                    "content": "BASKET",
+                    "style": {
+                      "fontSize": 11,
+                      "color": "{{theme.color.onSurfaceVariant}}",
+                      "letterSpacing": 1.6
+                    }
+                  },
+                  {
+                    "type": "text",
+                    "content": "{{basketCount}}",
+                    "style": {
+                      "fontSize": 26,
+                      "color": "{{theme.color.onSurface}}",
+                      "fontFamily": "JetBrainsMono"
+                    }
+                  }
+                ],
+                "gap": 4,
+                "crossAxisAlignment": "end"
+              }
+            ]
+          }
+        },
+        {
+          "type": "expanded",
+          "child": {
+            "type": "container",
+            "padding": {
+              "left": 24,
+              "right": 24,
+              "top": 16,
+              "bottom": 10
+            },
+            "child": {
+              "type": "container",
+              "padding": {
+                "all": 18
+              },
+              "decoration": {
+                "color": "{{theme.color.surface}}",
+                "borderRadius": 14,
+                "border": {
+                  "color": "{{theme.color.outline}}",
+                  "width": 1
+                }
+              },
+              "child": {
+                "type": "list",
+                "items": "{{menuRows}}",
+                "shrinkWrap": true,
+                "itemSpacing": 10,
+                "emptyMessage": "Nothing on the board today",
+                "itemTemplate": {
+                  "type": "linear",
+                  "direction": "horizontal",
+                  "crossAxisAlignment": "center",
+                  "children": [
+                    {
+                      "type": "container",
+                      "width": 44,
+                      "child": {
+                        "type": "text",
+                        "content": "{{item.sku}}",
+                        "textAlign": "start",
+                        "maxLines": 1,
+                        "style": {
+                          "fontSize": 13,
+                          "color": "{{theme.color.onSurfaceVariant}}",
+                          "textAlign": "start",
+                          "fontFamily": "JetBrainsMono"
+                        }
+                      },
+                      "alignment": "centerStart"
+                    },
+                    {
+                      "type": "box",
+                      "width": 0
+                    },
+                    {
+                      "type": "expanded",
+                      "child": {
+                        "type": "text",
+                        "content": "{{item.name}}",
+                        "style": {
+                          "fontSize": 16,
+                          "color": "{{theme.color.onSurface}}"
+                        }
+                      }
+                    },
+                    {
+                      "type": "box",
+                      "width": 0
+                    },
+                    {
+                      "type": "container",
+                      "width": 80,
+                      "child": {
+                        "type": "text",
+                        "content": "{{item.price}}",
+                        "textAlign": "end",
+                        "maxLines": 1,
+                        "style": {
+                          "fontSize": 15,
+                          "color": "{{theme.color.onSurface}}",
+                          "textAlign": "end",
+                          "fontFamily": "JetBrainsMono"
+                        }
+                      },
+                      "alignment": "centerEnd"
+                    },
+                    {
+                      "type": "box",
+                      "width": 0
+                    },
+                    {
+                      "type": "container",
+                      "width": 90,
+                      "child": {
+                        "type": "button",
+                        "label": "Add",
+                        "variant": "outlined",
+                        "onTap": {
+                          "type": "tool",
+                          "tool": "counter.add",
+                          "params": {
+                            "sku": "{{item.sku}}"
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        },
+        {
+          "type": "container",
+          "padding": {
+            "left": 24,
+            "right": 24,
+            "top": 6,
+            "bottom": 10
+          },
+          "child": {
+            "type": "container",
+            "padding": {
+              "all": 18
+            },
+            "decoration": {
+              "color": "{{theme.color.surface}}",
+              "borderRadius": 14,
+              "border": {
+                "color": "{{theme.color.outline}}",
+                "width": 1
+              }
+            },
+            "child": {
+              "type": "linear",
+              "direction": "vertical",
+              "children": [
+                {
+                  "type": "linear",
+                  "direction": "horizontal",
+                  "crossAxisAlignment": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "content": "IN THE BASKET",
+                      "style": {
+                        "fontSize": 11,
+                        "color": "{{theme.color.onSurfaceVariant}}",
+                        "letterSpacing": 1.6
+                      }
+                    },
+                    {
+                      "type": "spacer"
+                    },
+                    {
+                      "type": "text",
+                      "content": "{{basketLine}}",
+                      "style": {
+                        "fontSize": 13,
+                        "color": "{{theme.color.onSurfaceVariant}}"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "divider",
+                  "color": "{{theme.color.outline}}"
+                },
+                {
+                  "type": "linear",
+                  "direction": "horizontal",
+                  "crossAxisAlignment": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "content": "Tax",
+                      "style": {
+                        "fontSize": 13,
+                        "color": "{{theme.color.onSurfaceVariant}}"
+                      }
+                    },
+                    {
+                      "type": "spacer"
+                    },
+                    {
+                      "type": "text",
+                      "content": "{{tax}}",
+                      "style": {
+                        "fontSize": 14,
+                        "color": "{{theme.color.onSurfaceVariant}}",
+                        "fontFamily": "JetBrainsMono"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "linear",
+                  "direction": "horizontal",
+                  "crossAxisAlignment": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "content": "DUE",
+                      "style": {
+                        "fontSize": 12,
+                        "color": "{{theme.color.onSurfaceVariant}}",
+                        "letterSpacing": 1.6
+                      }
+                    },
+                    {
+                      "type": "spacer"
+                    },
+                    {
+                      "type": "text",
+                      "content": "{{due}}",
+                      "style": {
+                        "fontSize": 30,
+                        "color": "{{theme.color.onSurface}}",
+                        "fontFamily": "JetBrainsMono"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "button",
+                  "label": "Charge {{due}}",
+                  "variant": "filled",
+                  "fullWidth": true,
+                  "onTap": {
+                    "type": "tool",
+                    "tool": "counter.charge",
+                    "params": {}
+                  }
+                }
+              ],
+              "gap": 12
+            }
+          }
+        },
+        {
+          "type": "container",
+          "padding": {
+            "left": 24,
+            "right": 24,
+            "top": 4,
+            "bottom": 20
+          },
+          "child": {
+            "type": "linear",
+            "direction": "horizontal",
+            "crossAxisAlignment": "center",
+            "children": [
+              {
+                "type": "text",
+                "content": "{{taxNote}}",
+                "style": {
+                  "fontSize": 13,
+                  "color": "{{theme.color.onSurfaceVariant}}"
+                }
+              },
+              {
+                "type": "spacer"
+              },
+              {
+                "type": "text",
+                "content": "{{notice}}",
+                "style": {
+                  "fontSize": 13,
+                  "color": "{{theme.color.primary}}"
+                }
+              }
+            ]
+          }
+        }
+      ],
+      "crossAxisAlignment": "stretch"
+    }
+  }
+}
